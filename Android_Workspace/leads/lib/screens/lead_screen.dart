@@ -25,6 +25,14 @@ class _LeadScreenState extends State<LeadScreen> {
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   final _searchController = TextEditingController();
+  bool _hoverID = false;
+  bool _hoverOpportunity = false;
+  bool _hoverClient = false;
+  bool _hoverManagedBy = false;
+  bool _hoverETA = false;
+  bool _hoverStatus = false;
+  bool _DealStage = false;
+  bool _Tags = false;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +57,7 @@ class _LeadScreenState extends State<LeadScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'assets/images/logo.png',
-                    height: 65,
-                  ),
+
                   Row(
                     children: [
                       Container(
@@ -243,40 +248,63 @@ class _LeadScreenState extends State<LeadScreen> {
                                   ),
                                 ),
                                 DataColumn(
-                                  label: InkWell(
-                                    mouseCursor: SystemMouseCursors.click,
-                                    hoverColor: Colors.black,
-                                    onHover: (value) {
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
                                       setState(() {
-                                        _textColor =
-                                            value ? Colors.white : Colors.black;
+                                        _hoverETA = true;
                                       });
                                     },
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'ETA',
-                                          style: TextStyle(color: _textColor),
-                                        ),
-                                        SizedBox(width: 5),
-                                        Icon(
-                                          Icons.filter_alt_sharp,
-                                          color: _textColor,
-                                        ),
-                                      ],
+                                    onExit: (event) {
+                                      setState(() {
+                                        _hoverETA = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'ETA',
+                                            style: TextStyle(color:_hoverETA?Colors.white:_textColor),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: _hoverETA?Colors.white:_textColor,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
                                 DataColumn(
-                                  label: Row(
-                                    children: [
-                                      Text('Tags'),
-                                      SizedBox(width: 5),
-                                      Icon(
-                                        Icons.filter_alt_sharp,
-                                        color: Colors.black,
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
+                                      setState(() {
+                                        _hoverClient = true;
+                                      });
+                                    },
+                                    onExit: (event) {
+                                      setState(() {
+                                        _hoverClient = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+                                      child: Row(
+                                        children: [
+                                          Text('Tags'),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: Colors.black,
+                                          ),
+                                        ],
                                       ),
-                                    ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -302,20 +330,19 @@ class _LeadScreenState extends State<LeadScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    'assets/images/logo.png',
-                    height: 65,
+                  SizedBox(
+                    height: 80,
                   ),
                   Row(
                     children: [
                       Container(
-                          height: 25,
+                          height: 30,
                           width: 125,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(4),
                             color: Colors.white,
                             border: Border.all(
-                                color: Colors.blue.shade300, width: 1.5),
+                                color: Color(0xffD5D0FF), width: 1.7),
                           ),
                           child: DropDown()),
                       SizedBox(
@@ -388,209 +415,273 @@ class _LeadScreenState extends State<LeadScreen> {
                               headingRowHeight: 50.0,
                               columns: [
                                 DataColumn(
-                                  label: Row(
-                                    children: [
-                                      InkWell(
-                                        mouseCursor: SystemMouseCursors.click,
-                                        hoverColor: Colors.black,
-                                        onHover: (value) {
-                                          setState(() {
-                                            _textColor = value
-                                                ? Colors.white
-                                                : Colors.black;
-                                          });
-                                        },
-                                        onTap: () {},
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              'ID',
-                                              style:
-                                                  TextStyle(color: _textColor),
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
+                                      setState(() {
+                                        _hoverID = true;
+                                      });
+                                    },
+                                    onExit: (event) {
+                                      setState(() {
+                                        _hoverID = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+                                      onTap: () {},
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'ID',
+                                            style: TextStyle(
+                                              color: _hoverID ? Colors.white : _textColor,
                                             ),
-                                            SizedBox(width: 5),
-                                            _sortBy == 'ID'
-                                                ? Icon(
-                                                    Icons.filter_alt_sharp,
-                                                    color: _textColor,
-                                                  )
-                                                : SizedBox(),
-                                          ],
-                                        ),
+                                          ),
+                                          SizedBox(width: 5),
+                                          _sortBy == 'ID'
+                                              ? Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: _hoverID ? Colors.white : _textColor,
+                                          )
+                                              : SizedBox(),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                DataColumn(
-                                  label: InkWell(
-                                    mouseCursor: SystemMouseCursors.click,
-                                    hoverColor: Colors.black,
-                                    onHover: (value) {
-                                      setState(() {
-                                        _textColor =
-                                            value ? Colors.white : Colors.black;
-                                      });
-                                    },
-                                    onTap: () {},
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Opportunity',
-                                          style: TextStyle(color: _textColor),
-                                        ),
-                                        SizedBox(width: 5),
-                                        Icon(
-                                          Icons.filter_alt_sharp,
-                                          color: _textColor,
-                                        ),
-                                      ],
                                     ),
                                   ),
                                 ),
                                 DataColumn(
-                                  label: InkWell(
-                                    mouseCursor: SystemMouseCursors.click,
-                                    hoverColor: Colors.black,
-                                    onHover: (value) {
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
                                       setState(() {
-                                        _textColor =
-                                            value ? Colors.white : Colors.black;
+                                        _hoverOpportunity = true;
                                       });
                                     },
-                                    onTap: () {},
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Client',
-                                          style: TextStyle(color: _textColor),
-                                        ),
-                                        SizedBox(width: 5),
-                                        Icon(
-                                          Icons.filter_alt_sharp,
-                                          color: _textColor,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                DataColumn(
-                                  label: InkWell(
-                                    mouseCursor: SystemMouseCursors.click,
-                                    hoverColor: Colors.black,
-                                    onHover: (value) {
+                                    onExit: (event) {
                                       setState(() {
-                                        _textColor =
-                                            value ? Colors.white : Colors.black;
+                                        _hoverOpportunity = false;
                                       });
                                     },
-                                    onTap: () {},
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Managed By',
-                                          style: TextStyle(color: _textColor),
-                                        ),
-                                        SizedBox(width: 5),
-                                        Icon(
-                                          Icons.filter_alt_sharp,
-                                          color: _textColor,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                DataColumn(
-                                  label: InkWell(
-                                    mouseCursor: SystemMouseCursors.click,
-                                    hoverColor: Colors.black,
-                                    onHover: (value) {
-                                      setState(() {
-                                        _textColor =
-                                            value ? Colors.white : Colors.black;
-                                      });
-                                    },
-                                    onTap: () {},
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Status',
-                                          style: TextStyle(color: _textColor),
-                                        ),
-                                        SizedBox(width: 5),
-                                        Icon(
-                                          Icons.filter_alt_sharp,
-                                          color: _textColor,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                DataColumn(
-                                  label: InkWell(
-                                    mouseCursor: SystemMouseCursors.click,
-                                    hoverColor: Colors.black,
-                                    onHover: (value) {
-                                      setState(() {
-                                        _textColor =
-                                            value ? Colors.white : Colors.black;
-                                      });
-                                    },
-                                    onTap: () {},
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'Deal Stage',
-                                          style: TextStyle(color: _textColor),
-                                        ),
-                                        SizedBox(width: 5),
-                                        Icon(
-                                          Icons.filter_alt_sharp,
-                                          color: _textColor,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                DataColumn(
-                                  label: InkWell(
-                                    mouseCursor: SystemMouseCursors.click,
-                                    hoverColor: Colors.black,
-                                    onHover: (value) {
-                                      setState(() {
-                                        _textColor =
-                                            value ? Colors.white : Colors.black;
-                                      });
-                                    },
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          'ETA',
-                                          style: TextStyle(color: _textColor),
-                                        ),
-                                        SizedBox(width: 5),
-                                        Icon(
-                                          Icons.filter_alt_sharp,
-                                          color: _textColor,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                DataColumn(
-                                  label: Row(
-                                    children: [
-                                      Text(
-                                        'Tags',
-                                        style: TextStyle(color: _textColor),
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+
+                                      onTap: () {},
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Opportunity',
+                                            style: TextStyle(color: _hoverOpportunity?Colors.white:_textColor),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: _hoverOpportunity?Colors.white:_textColor,
+                                          ),
+                                        ],
                                       ),
-                                      SizedBox(width: 5),
-                                      Icon(
-                                        Icons.filter_alt_sharp,
-                                        color: _textColor,
-                                      ),
-                                    ],
+                                    ),
                                   ),
                                 ),
+                                DataColumn(
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
+                                      setState(() {
+                                        _hoverClient = true;
+                                      });
+                                    },
+                                    onExit: (event) {
+                                      setState(() {
+                                        _hoverClient = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+
+                                      onTap: () {},
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Client',
+                                            style: TextStyle(color:_hoverClient?Colors.white:_textColor),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: _hoverClient?Colors.white:_textColor,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
+                                      setState(() {
+                                        _hoverManagedBy = true;
+                                      });
+                                    },
+                                    onExit: (event) {
+                                      setState(() {
+                                        _hoverManagedBy = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+
+                                      onTap: () {},
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Managed By',
+                                            style: TextStyle(color: _hoverManagedBy?Colors.white:_textColor),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: _hoverManagedBy?Colors.white:_textColor,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
+                                      setState(() {
+                                        _hoverStatus = true;
+                                      });
+                                    },
+                                    onExit: (event) {
+                                      setState(() {
+                                        _hoverStatus = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+
+                                      onTap: () {},
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Status',
+                                            style: TextStyle(color: _hoverStatus?Colors.white:_textColor),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: _hoverStatus?Colors.white:_textColor,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
+                                      setState(() {
+                                        _DealStage = true;
+                                      });
+                                    },
+                                    onExit: (event) {
+                                      setState(() {
+                                        _DealStage = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+
+                                      onTap: () {},
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Deal Stage',
+                                            style: TextStyle(color: _DealStage?Colors.white:_textColor),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: _DealStage?Colors.white:_textColor,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
+                                      setState(() {
+                                        _hoverETA = true;
+                                      });
+                                    },
+                                    onExit: (event) {
+                                      setState(() {
+                                        _hoverETA = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+
+                                      onTap: () {},
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'ETA',
+                                            style: TextStyle(color: _hoverETA?Colors.white:_textColor),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: _hoverETA?Colors.white:_textColor,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    onHover: (event) {
+                                      setState(() {
+                                        _Tags = true;
+                                      });
+                                    },
+                                    onExit: (event) {
+                                      setState(() {
+                                        _Tags = false;
+                                      });
+                                    },
+                                    child: InkWell(
+                                      hoverColor: Colors.black,
+
+                                      onTap: () {},
+                                      child: Row(
+                                        children: [
+                                          Text(
+                                            'Tags',
+                                            style: TextStyle(color: _Tags?Colors.white:_textColor),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Icon(
+                                            Icons.filter_alt_sharp,
+                                            color: _Tags?Colors.white:_textColor,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
                               ],
                               source: _data,
                               columnSpacing: 85,

@@ -1,4 +1,3 @@
-import 'dart:js_util';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -79,23 +78,23 @@ class _PendingProposalState extends State<PendingProposal> {
                     children: [
                       Text(
                         'ID',
-                        style: TextStyle(color: _hoverID ? Colors.white : _textColor,),
+                        style: TextStyle(
+                          color: _hoverID ? Colors.white : _textColor,
+                        ),
                       ),
                       SizedBox(width: 5),
                       _sortBy == 'ID'
                           ? Icon(
                               Icons.filter_alt_sharp,
-                              color: _hoverID?Colors.white:_textColor,
+                              color: _hoverID ? Colors.white : _textColor,
                             )
                           : SizedBox(),
                     ],
                   ),
                 ),
               ),
-
             ),
             DataColumn(
-
               label: MouseRegion(
                 cursor: SystemMouseCursors.click,
                 onHover: (event) {
@@ -115,12 +114,14 @@ class _PendingProposalState extends State<PendingProposal> {
                     children: [
                       Text(
                         'Opportunity',
-                        style: TextStyle(color: _hoverOpportunity?Colors.white:_textColor),
+                        style: TextStyle(
+                            color:
+                                _hoverOpportunity ? Colors.white : _textColor),
                       ),
                       SizedBox(width: 5),
                       Icon(
                         Icons.filter_alt_sharp,
-                        color: _hoverOpportunity?Colors.white:_textColor,
+                        color: _hoverOpportunity ? Colors.white : _textColor,
                       ),
                     ],
                   ),
@@ -132,7 +133,6 @@ class _PendingProposalState extends State<PendingProposal> {
                 cursor: SystemMouseCursors.click,
                 onHover: (event) {
                   setState(() {
-
                     _hoverClient = true;
                   });
                 },
@@ -143,18 +143,18 @@ class _PendingProposalState extends State<PendingProposal> {
                 },
                 child: InkWell(
                   hoverColor: Colors.black,
-
                   onTap: () {},
                   child: Row(
                     children: [
                       Text(
                         'Client',
-                        style: TextStyle(color:_hoverClient?Colors.white: _textColor),
+                        style: TextStyle(
+                            color: _hoverClient ? Colors.white : _textColor),
                       ),
                       SizedBox(width: 5),
                       Icon(
                         Icons.filter_alt_sharp,
-                        color: _hoverClient?Colors.white:_textColor,
+                        color: _hoverClient ? Colors.white : _textColor,
                       ),
                     ],
                   ),
@@ -166,7 +166,6 @@ class _PendingProposalState extends State<PendingProposal> {
                 cursor: SystemMouseCursors.click,
                 onHover: (event) {
                   setState(() {
-
                     _hoverManagedBy = true;
                   });
                 },
@@ -177,18 +176,18 @@ class _PendingProposalState extends State<PendingProposal> {
                 },
                 child: InkWell(
                   hoverColor: Colors.black,
-
                   onTap: () {},
                   child: Row(
                     children: [
                       Text(
                         'Managed By',
-                        style: TextStyle(color:_hoverManagedBy?Colors.white: _textColor),
+                        style: TextStyle(
+                            color: _hoverManagedBy ? Colors.white : _textColor),
                       ),
                       SizedBox(width: 5),
                       Icon(
                         Icons.filter_alt_sharp,
-                        color: _hoverManagedBy?Colors.white:_textColor,
+                        color: _hoverManagedBy ? Colors.white : _textColor,
                       ),
                     ],
                   ),
@@ -200,8 +199,7 @@ class _PendingProposalState extends State<PendingProposal> {
                 cursor: SystemMouseCursors.click,
                 onHover: (event) {
                   setState(() {
-
-                    _hoverETA= true;
+                    _hoverETA = true;
                   });
                 },
                 onExit: (event) {
@@ -211,18 +209,18 @@ class _PendingProposalState extends State<PendingProposal> {
                 },
                 child: InkWell(
                   hoverColor: Colors.black,
-
                   onTap: () {},
                   child: Row(
                     children: [
                       Text(
                         'ETA',
-                        style: TextStyle(color:_hoverETA?Colors.white: _textColor),
+                        style: TextStyle(
+                            color: _hoverETA ? Colors.white : _textColor),
                       ),
                       SizedBox(width: 5),
                       Icon(
                         Icons.filter_alt_sharp,
-                        color: _hoverETA?Colors.white:_textColor,
+                        color: _hoverETA ? Colors.white : _textColor,
                       ),
                     ],
                   ),
@@ -234,7 +232,6 @@ class _PendingProposalState extends State<PendingProposal> {
                 cursor: SystemMouseCursors.click,
                 onHover: (event) {
                   setState(() {
-
                     _hoverStatus = true;
                   });
                 },
@@ -245,18 +242,18 @@ class _PendingProposalState extends State<PendingProposal> {
                 },
                 child: InkWell(
                   hoverColor: Colors.black,
-
                   onTap: () {},
                   child: Row(
                     children: [
                       Text(
                         'Status',
-                        style: TextStyle(color:_hoverStatus?Colors.white: _textColor),
+                        style: TextStyle(
+                            color: _hoverStatus ? Colors.white : _textColor),
                       ),
                       SizedBox(width: 5),
                       Icon(
                         Icons.filter_alt_sharp,
-                        color: _hoverStatus?Colors.white:_textColor,
+                        color: _hoverStatus ? Colors.white : _textColor,
                       ),
                     ],
                   ),
@@ -274,7 +271,6 @@ class _PendingProposalState extends State<PendingProposal> {
       ),
     );
   }
-
 }
 
 class MyData extends DataTableSource {

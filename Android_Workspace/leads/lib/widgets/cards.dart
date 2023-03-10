@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:leads/responsive.dart';
 
 import 'dropdown_list.dart';
@@ -8,171 +9,250 @@ class Cards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       children: [
         SizedBox(
-          width: 5,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(4.5)),
-            gradient: LinearGradient(
-              colors: [Color(0XFF6552C5),Color(0XFF9787E6)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          height: 100,
-          width: 170,
-          child: Row(
-            children: [
-              Text('Leads Converted',style: TextStyle(color: Colors.white),),
-            ],
-          ),
-        ),
-        SizedBox(
           width: 10,
         ),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(4.5)),
             gradient: LinearGradient(
-              colors: [Color(0XFFF9532B),Color(0XFFF5A52B)],
+              colors: [Color(0XFF6552C5), Color(0XFF9787E6)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
           ),
           height: 100,
           width: 170,
-          child: Row(
-            children: [
-
-              Text('New Leads',style: TextStyle(color: Colors.white),),
-            ],
-          ),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(4.5)),
-            gradient: LinearGradient(
-              colors: [Color(0XFF22976E),Color(0XFF36D28E)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          height: 100,
-          width: 170,
-          child: Row(
-            children: [
-              Text('Active Leads',style: TextStyle(color: Colors.white),),
-            ],
-          ),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(4.5)),
-            gradient: LinearGradient(
-              colors: [Color(0XFFAB0000),Color(0XFFF52B2B)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          height: 100,
-          width: 170,
-          child: Row(
-            children: [
-              Text('Inactive Leads',style: TextStyle(color: Colors.white),),
-            ],
-          ),
-        ),
-
-      //  FUNNEL BUTTON
-         SizedBox(
-           width: 70,
-         ),
-
-        Responsive(
-          mobile: Container(),
-          tablet: Container(),
-          desktop: Column(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(
                 height: 15,
               ),
-              //1
-              Container(
-                  height: 25,
-                  width: 300,
-                  child: Center(child: Text('Prospects',style: TextStyle(color: Colors.white,fontSize: 15),)),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color(0xffFFBB40),
-                    border:
-                    Border.all( color: Color(0xffFFBB40), width: 1.5),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 5,
                   ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              //2
-              Container(
-                height: 25,
-                width: 260,
-                child: Center(child: Text('Qualified',style: TextStyle(color: Colors.white,fontSize: 15),)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xff00C7B2),
-                  border:
-                  Border.all(color: Color(0xff00C7B2), width: 1.5),
-                ),
+                  Text(
+                    'New Leads',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: GoogleFonts.notoSans().fontFamily,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,
               ),
-              //3
-              Container(
-                height: 25,
-                width: 230,
-                child: Center(child: Text('Proposals',style: TextStyle(color: Colors.white,fontSize: 15),)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xffFF520D),
-                  border:
-                  Border.all( color: Color(0xffFF520D), width: 1.5),
-                ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    '2,876',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: GoogleFonts.notoSans().fontFamily),
+                  ),
+                ],
               ),
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 15,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(4.5)),
+            gradient: LinearGradient(
+              colors: [Color(0XFFF9532B), Color(0XFFF5A52B)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          height: 100,
+          width: 170,
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
               SizedBox(
-                height: 8,
+                height: 15,
               ),
-              //4
-              Container(
-                height: 25,
-                width: 200,
-                child: Center(child: Text('Negotiations',style: TextStyle(color: Colors.white,fontSize: 15),)),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xffFE8A11),
-                  border:
-                  Border.all(color: Color(0xffFE8A11), width: 1.5),
-                ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'Leads Converted',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: GoogleFonts.notoSans().fontFamily,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 10,
               ),
-              //5
-
+              Row(
+                children: [
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    '3,299',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: GoogleFonts.notoSans().fontFamily),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 15
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(4.5)),
+            gradient: LinearGradient(
+              colors: [Color(0XFF22976E), Color(0XFF36D28E)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          height: 100,
+          width: 170,
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'Active Leads',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: GoogleFonts.notoSans().fontFamily,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    '1,735',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: GoogleFonts.notoSans().fontFamily),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 15,
+        ),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(4.5)),
+            gradient: LinearGradient(
+              colors: [Color(0XFFAB0000), Color(0XFFF52B2B)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          height: 100,
+          width: 170,
+          child:Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(
+                height: 15,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'Inactive Leads',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: GoogleFonts.notoSans().fontFamily,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    '2,875',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: GoogleFonts.notoSans().fontFamily),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
 
+        //  FUNNEL BUTTON
+
+
+        Responsive(
+          mobile: Container(),
+          tablet: Container(),
+          desktop: Container(),
+        ),
       ],
     );
   }
 }
-

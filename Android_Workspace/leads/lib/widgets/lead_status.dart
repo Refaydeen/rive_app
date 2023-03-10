@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LeadStatus extends StatelessWidget {
   const LeadStatus({Key? key}) : super(key: key);
@@ -7,7 +8,7 @@ class LeadStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      height: 200,
+      height: 240,
       width: 250,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -31,20 +32,20 @@ class LeadStatus extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               SizedBox(width: 10,),
-              Text('Lead Status',style: TextStyle(color: Colors.black,)),
+              Text('Lead Status',style: TextStyle(color: Color(0xFF2A2E3E),fontWeight: FontWeight.w400,fontSize: 14,fontFamily: GoogleFonts.notoSans().fontFamily)),
             ],
           ),
           SizedBox(
             height: 10,
           ),
           SizedBox(
-            height: 150,
+            height: 180,
             width: 160,
             child:PieChart(
                 PieChartData(
                     sections: [
-                      PieChartSectionData(value: 70,color: Colors.red.shade900),
-                      PieChartSectionData(value: 7,color: Colors.deepOrange),
+                      PieChartSectionData(showTitle: true,value: 70,color: Colors.red.shade900),
+                      PieChartSectionData(showTitle: true,value: 7,color: Colors.deepOrange),
                       PieChartSectionData(value: 23,color: Colors.blue.shade900),
 
                     ]

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../screens/dashBoard_screen.dart';
 import '../widgets/create_leadButton.dart';
 class ClientPage extends StatelessWidget {
   const ClientPage({required this.onPress});
@@ -9,7 +8,7 @@ class ClientPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 25,
         ),
         Expanded(

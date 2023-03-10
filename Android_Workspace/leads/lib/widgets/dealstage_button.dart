@@ -34,43 +34,43 @@ class _DealsDropDownState extends State<DealsDropDown> {
       return Color(0xff);
     } else if (dropdownvalue == 'Negotiations') {
       return Color(0xffFE8A11);
-    }
-    else if (dropdownvalue == 'Final Sales') {
+    } else if (dropdownvalue == 'Final Sales') {
       return Color(0xff93C90F);
-    }
-    else if (dropdownvalue == 'Awaiting') {
+    } else if (dropdownvalue == 'Awaiting') {
       return Color(0xff015486);
     } else if (dropdownvalue == 'Lost') {
       return Color(0xff00A0DC);
     } else if (dropdownvalue == 'Won') {
       return Color(0xff009D2C);
-    }
-    else {
+    } else {
       return Colors.grey;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       height: 25,
       width: 140,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: _getButtonColor() ,
-        border:
-        Border.all(color: _getButtonColor(),width: 1.5),
+        color: _getButtonColor(),
+        border: Border.all(color: _getButtonColor(), width: 1.5),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
-
           alignment: Alignment.center,
           focusColor: Colors.black12,
           underline: null,
           items: items.map((String items) {
             return DropdownMenuItem(
               value: items,
-              child: Text(items,style: TextStyle(color: Colors.black),),
+              child: Text(
+                items,
+                style: TextStyle(
+                  color: dropdownvalue == items ? Colors.white : Colors.black,
+                ),
+              ),
             );
           }).toList(),
           // After selecting the desired option,it will
@@ -83,10 +83,9 @@ class _DealsDropDownState extends State<DealsDropDown> {
           value: dropdownvalue,
           icon: Icon(
             Icons.arrow_drop_down,
-            color: Colors.black,
+            color: Colors.white,
             size: 30,
           ),
-
         ),
       ),
     );

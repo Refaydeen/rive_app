@@ -24,7 +24,8 @@ class _StatusDropDownState extends State<StatusDropDown> {
     } else if (dropdownvalue == 'Cold') {
       return Color(0xff003FB8);
     } else {
-      return Colors.grey; // default color if none of the above conditions are met
+      return Colors
+          .grey; // default color if none of the above conditions are met
     }
   }
 
@@ -35,20 +36,23 @@ class _StatusDropDownState extends State<StatusDropDown> {
       width: 80,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color: _getButtonColor() ,
-        border:
-        Border.all( color: _getButtonColor(),width: 1.5),
+        color: _getButtonColor(),
+        border: Border.all(color: _getButtonColor(), width: 1.5),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
-
           alignment: Alignment.center,
           focusColor: Colors.black12,
           underline: null,
           items: items.map((String items) {
             return DropdownMenuItem(
               value: items,
-              child: Text(items,style: TextStyle(color: Colors.white),),
+              child: Text(
+                items,
+                style: TextStyle(
+                  color: dropdownvalue == items ? Colors.white : Colors.black,
+                ),
+              ),
             );
           }).toList(),
           // After selecting the desired option,it will
@@ -61,13 +65,11 @@ class _StatusDropDownState extends State<StatusDropDown> {
           value: dropdownvalue,
           icon: Icon(
             Icons.arrow_drop_down,
-            color: Colors.black,
+            color: Colors.white,
             size: 30,
           ),
-
         ),
       ),
     );
   }
 }
-
