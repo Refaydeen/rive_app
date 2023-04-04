@@ -4,9 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'counter/bloc/counter_event.dart';
 import 'counter/counter.dart';
-void main() {
-  // runApp(const MyApp());
-  runApp(const StoreApp());
+// void main() {
+//   // runApp(const MyApp());
+//   runApp(const StoreAppCubit());
+// }
+
+import 'package:bloc_pattern/app_Observer.dart';
+
+void main(){
+  Bloc.observer=AppObserver();
+  runApp(StoreApp());
 }
 
 class MyApp extends StatelessWidget {

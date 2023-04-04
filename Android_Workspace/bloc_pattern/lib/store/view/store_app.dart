@@ -1,10 +1,7 @@
-import 'package:bloc_pattern/store/bloc/store_bloc.dart';
-import 'package:bloc_pattern/store/bloc/store_event.dart';
-import 'package:bloc_pattern/store/view/cart_Screen.dart';
+import 'package:bloc_pattern/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/store_state.dart';
 
 class StoreApp extends StatelessWidget {
   const StoreApp({super.key});
@@ -36,10 +33,11 @@ class _StoreAppView extends StatefulWidget {
 class _StoreAppViewState extends State<_StoreAppView> {
 
   void _addToCart(int cartId){
-      context.read<StoreBloc>().add(StoreProductAddedToCart(cartId));
+      context.read<StoreBloc>().add(StoreProductsAddedToCart(cartId));
   }
   void _removeFromCart(int cartId){
-    context.read<StoreBloc>().add(StoreProductRemovedFromCart(cartId));
+    print('remove');
+    context.read<StoreBloc>().add(StoreProductsRemovedFromCart(cartId));
 
   }
   void _viewCart(){
@@ -58,7 +56,13 @@ class _StoreAppViewState extends State<_StoreAppView> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BlocListener<StoreBloc, StoreState>(
+ listenWhen: (previous,current)=>previous.cartIds.length!=current.cartIds.length,
+  listener: (context, state) {
+    // TODO: implement listener
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Shopping Cart Update')));
+  },
+  child: Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
       ),
@@ -78,7 +82,7 @@ class _StoreAppViewState extends State<_StoreAppView> {
                   ),
                   OutlinedButton(
                       onPressed: () {
-                        context.read<StoreBloc>().add(StoreProductRequested());
+                        context.read<StoreBloc>().add(StoreProductsRequested());
                       },
                       child: Text('Try Again'))
                 ],
@@ -98,7 +102,7 @@ class _StoreAppViewState extends State<_StoreAppView> {
                   ),
                   OutlinedButton(
                       onPressed: () {
-                        context.read<StoreBloc>().add(StoreProductRequested());
+                        context.read<StoreBloc>().add(StoreProductsRequested());
                       },
                       child: Text('Load Products'))
                 ],
@@ -135,14 +139,15 @@ class _StoreAppViewState extends State<_StoreAppView> {
                         height: 20,
                       ),
                       OutlinedButton(
+                        onPressed:inCart
+                            ? ()=>_removeFromCart(product.id):
+                            ()=>_addToCart(product.id),
+
                         style: ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.all(10)),
                           backgroundColor: inCart?MaterialStatePropertyAll(Colors.black12):null
                         ),
 
-                          onPressed:inCart?
-                              ()=>_removeFromCart(product.id):
-                              ()=>_addToCart(product.id),
                           child: Padding(
 
                             padding: const EdgeInsets.only(),
@@ -170,10 +175,31 @@ class _StoreAppViewState extends State<_StoreAppView> {
           },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed:_viewCart,
-        child: Icon(Icons.shopping_cart),
+      floatingActionButton: Stack(
+
+        children: [
+          FloatingActionButton(
+            onPressed:_viewCart,
+            child: Icon(Icons.shopping_cart),
+          ),
+          BlocBuilder<StoreBloc,StoreState>(builder: (context,state){
+            if(state.cartIds.isEmpty){
+              return Container();
+            }
+            return Positioned(
+              right: -3,
+                bottom: 40,
+                child: CircleAvatar(
+                  backgroundColor: Colors.tealAccent,
+                  radius: 12,
+                    child: Text(
+                      state.cartIds.length.toString()
+                    ),
+                ));
+          })
+        ],
       ),
-    );
+    ),
+);
   }
 }

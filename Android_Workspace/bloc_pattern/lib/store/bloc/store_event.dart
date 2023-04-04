@@ -1,16 +1,15 @@
 abstract class StoreEvent {}
 
-class StoreProductRequested extends StoreEvent{
+class StoreProductsRequested extends StoreEvent {}
 
-}
-class StoreProductAddedToCart extends StoreEvent{
+class StoreProductsAddedToCart extends StoreEvent {
   final int cartId;
 
-  StoreProductAddedToCart(this.cartId);
+  StoreProductsAddedToCart(this.cartId);
 }
-class StoreProductRemovedFromCart extends StoreEvent{
+
+class StoreProductsRemovedFromCart extends StoreEvent {
   final int cartId;
 
-  StoreProductRemovedFromCart(this.cartId);
-
+  StoreProductsRemovedFromCart(this.cartId);
 }
